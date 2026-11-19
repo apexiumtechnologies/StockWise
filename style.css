@@ -1,0 +1,226 @@
+/* ==========================================================
+   STOCKWISE LANDING PAGE
+   ========================================================== */
+
+/* ---------- Design tokens: colours and fonts live here ---------- */
+:root {
+  --text: #18181B;          /* near-black body text */
+  --muted: #52525B;         /* secondary text, passes AA on white and grey */
+  --bg: #FFFFFF;            /* white sections */
+  --bg-alt: #F4F4F5;        /* light grey sections */
+  --border: #E4E4E7;
+  --blue: #1D4ED8;          /* buttons */
+  --blue-dark: #1E40AF;     /* button hover */
+  --orange: #C2410C;        /* ONLY for low-stock warnings */
+  --radius: 16px;
+  --font-head: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+/* ---------- Base / reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; } /* offsets sticky nav on anchor jumps */
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+h1, h2, h3 {
+  font-family: var(--font-head);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 700; }
+h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; margin-bottom: 1.5em; }
+h3 { font-size: 1.25rem; font-weight: 500; }
+p { margin: 0 0 1em; }
+ul, ol { list-style: none; margin: 0; padding: 0; }
+a { color: inherit; }
+
+/* Visible keyboard focus for accessibility */
+a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+
+/* Centred container, max 1140px */
+.container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- Buttons (min 44px tall) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background-color 0.15s;
+}
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--blue-dark); }
+.btn-secondary { background: #fff; color: var(--text); border-color: var(--text); }
+.btn-secondary:hover { background: var(--bg-alt); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ---------- 1. Nav bar: logo left, links centre, button right ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--border);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
+.logo { font-family: var(--font-head); font-weight: 700; font-size: 1.5rem; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.nav-links { display: flex; gap: 8px; }
+.nav-links a, .footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-links a:hover, .footer-links a:hover { text-decoration: underline; }
+
+/* ---------- 2. Hero: two columns (text + dashboard preview) ---------- */
+.hero { padding: 80px 0 96px; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.label {
+  display: inline-block;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+.lead { font-size: 1.1875rem; color: var(--muted); max-width: 34em; margin-bottom: 2rem; }
+
+/* Dashboard preview: a card with stats, chart and alerts */
+.dashboard {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  gap: 14px;
+}
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.stat, .chart, .alert { background: #fff; border: 1px solid var(--border); border-radius: 12px; }
+.stat { padding: 14px; display: flex; flex-direction: column; }
+.stat-num { font-family: var(--font-head); font-size: 1.75rem; font-weight: 700; line-height: 1.1; }
+.stat-name { font-size: 0.8125rem; color: var(--muted); }
+.chart { padding: 14px 16px 16px; }
+.chart-title { font-size: 0.875rem; font-weight: 600; margin-bottom: 10px; }
+.bars { display: flex; align-items: flex-end; gap: 10px; height: 110px; }
+.bars span { flex: 1; background: var(--blue); border-radius: 6px 6px 0 0; }
+/* Orange is reserved for low-stock warnings */
+.alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-left: 4px solid var(--orange);
+  font-size: 0.9375rem;
+}
+.alerts { display: grid; gap: 10px; }
+.alert strong { color: var(--orange); }
+
+/* ---------- Shared section spacing and backgrounds ---------- */
+.section { padding: 96px 0; }
+.section-grey { background: var(--bg-alt); }
+
+/* ---------- Cards (used by problem, features, steps, audience) ---------- */
+.cards { display: grid; gap: 24px; }
+.cards-3 { grid-template-columns: repeat(3, 1fr); }
+.cards-4 { grid-template-columns: repeat(4, 1fr); }
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+.section-grey .card { border-color: transparent; }
+.card p { color: var(--muted); margin-bottom: 0; }
+
+/* ---------- 4. Features: icon tiles ---------- */
+.icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #DBEAFE;
+  color: var(--blue);
+  margin-bottom: 18px;
+}
+.icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.icon-warn { background: #FFEDD5; color: var(--orange); } /* low-stock alert icon uses the warning orange */
+
+/* ---------- 5. How it works: three numbered steps ---------- */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.step-num {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 18px;
+}
+
+/* ---------- 7. Call to action: dark rounded box ---------- */
+.cta-box {
+  background: var(--text);
+  color: #fff;
+  border-radius: 28px;
+  padding: 72px 32px;
+  text-align: center;
+}
+.cta-box h2 { margin-bottom: 0.4em; }
+.cta-box p { color: #D4D4D8; margin-bottom: 2rem; }
+.cta-box .btn-primary { background: #3B82F6; color: #0B1220; } /* lighter blue keeps contrast on dark */
+.cta-box .btn-primary:hover { background: #60A5FA; }
+.cta-box .btn:focus-visible { outline-color: #fff; }
+
+/* ---------- 8. Footer ---------- */
+.site-footer { background: var(--bg-alt); padding: 40px 0; }
+.footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.copyright { margin: 0; color: var(--muted); font-size: 0.9375rem; }
+
+/* ---------- Tablet: 4-column features become 2 columns ---------- */
+@media (max-width: 1024px) {
+  .cards-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Phones (under 768px): everything stacks in one column ---------- */
+@media (max-width: 767px) {
+  .hero { padding: 48px 0 64px; }
+  .hero-grid, .cards-3, .cards-4, .steps { grid-template-columns: 1fr; }
+  .hero-grid { gap: 40px; }
+  .section { padding: 64px 0; }
+  .nav { flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; }
+  .nav-links { order: 3; width: 100%; justify-content: space-between; gap: 0; overflow-x: auto; }
+  .nav-links a { padding: 0 8px; font-size: 0.9375rem; }
+  .btn-row .btn { flex: 1 1 100%; }
+  .cta-box { padding: 48px 24px; border-radius: 22px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}

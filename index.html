@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StockWise – Inventory &amp; sales tracker for small shops</title>
+  <meta name="description" content="StockWise helps small shops track inventory and sales, with low-stock alerts and a weekly summary.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. NAV BAR -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a class="logo" href="#top">StockWise</a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#who-its-for">Who it's for</a></li>
+      </ul>
+      <a class="btn btn-primary" href="#get-started">Get started free</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- 2. HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="label">Inventory &amp; sales tracker for small shops</p>
+          <h1>Know what's on your shelves. Before it runs out.</h1>
+          <p class="lead">StockWise keeps a live count of every product in your shop, updates it with each sale, and warns you before anything sells out.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#get-started">Get started free</a>
+            <a class="btn btn-secondary" href="#how-it-works">See how it works</a>
+          </div>
+        </div>
+
+        <!-- Dashboard preview built from plain HTML boxes -->
+        <div class="dashboard" role="img" aria-label="Preview of the StockWise dashboard showing three stats, a weekly sales chart and two low-stock alerts">
+          <div class="stat-row" aria-hidden="true">
+            <div class="stat"><span class="stat-num">248</span><span class="stat-name">Products</span></div>
+            <div class="stat"><span class="stat-num">86</span><span class="stat-name">Sales this week</span></div>
+            <div class="stat"><span class="stat-num">5</span><span class="stat-name">Low stock</span></div>
+          </div>
+          <div class="chart" aria-hidden="true">
+            <p class="chart-title">Sales this week</p>
+            <div class="bars">
+              <span style="height:45%"></span>
+              <span style="height:70%"></span>
+              <span style="height:55%"></span>
+              <span style="height:85%"></span>
+              <span style="height:65%"></span>
+              <span style="height:100%"></span>
+              <span style="height:50%"></span>
+            </div>
+          </div>
+          <div class="alerts" aria-hidden="true">
+            <div class="alert"><span>Rice 5 kg</span><strong>3 left</strong></div>
+            <div class="alert"><span>Paracetamol 500 mg</span><strong>6 left</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. THE PROBLEM -->
+    <section class="section section-grey" id="problem">
+      <div class="container">
+        <h2>Running a shop shouldn't mean guessing</h2>
+        <div class="cards cards-3">
+          <article class="card">
+            <h3>Items run out without warning</h3>
+            <p>You find out a bestseller is gone when a customer asks for it.</p>
+          </article>
+          <article class="card">
+            <h3>Sales don't match stock</h3>
+            <p>The notebook says one number, the shelf says another, and nobody knows why.</p>
+          </article>
+          <article class="card">
+            <h3>No clear picture of the week</h3>
+            <p>It's hard to see what sold, what didn't, and what to reorder.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. FEATURES -->
+    <section class="section" id="features">
+      <div class="container">
+        <h2>Everything you need, nothing you don't</h2>
+        <div class="cards cards-4">
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
+            </div>
+            <h3>Track every product</h3>
+            <p>See the live count for each item, with its price and category.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+            </div>
+            <h3>Record sales fast</h3>
+            <p>Log a sale in a couple of taps and stock updates by itself.</p>
+          </article>
+          <article class="card">
+            <div class="icon icon-warn" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18v.5"/></svg>
+            </div>
+            <h3>Low-stock alerts</h3>
+            <p>Get a warning when an item drops below the level you set.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+            </div>
+            <h3>Weekly AI summary</h3>
+            <p>Every week, a short plain-language report on what sold and what to reorder.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. HOW IT WORKS -->
+    <section class="section section-grey" id="how-it-works">
+      <div class="container">
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li class="card step">
+            <span class="step-num" aria-hidden="true">1</span>
+            <h3>Add your products</h3>
+            <p>Enter your items and how many you have on the shelf today.</p>
+          </li>
+          <li class="card step">
+            <span class="step-num" aria-hidden="true">2</span>
+            <h3>Record each sale</h3>
+            <p>Tap the item you sold. StockWise subtracts it from your count.</p>
+          </li>
+          <li class="card step">
+            <span class="step-num" aria-hidden="true">3</span>
+            <h3>Check your dashboard</h3>
+            <p>See stock levels, weekly sales and alerts in one place.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6. WHO IT'S FOR -->
+    <section class="section" id="who-its-for">
+      <div class="container">
+        <h2>Built for shops like yours</h2>
+        <div class="cards cards-3">
+          <article class="card">
+            <h3>Grocery stores</h3>
+            <p>Keep fast-moving staples stocked and spot slow sellers early.</p>
+          </article>
+          <article class="card">
+            <h3>Pharmacies</h3>
+            <p>Know when essential medicines are running low before patients ask.</p>
+          </article>
+          <article class="card">
+            <h3>Boutiques</h3>
+            <p>Track sizes and styles so popular pieces never disappear unnoticed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CALL TO ACTION -->
+    <section class="section cta-section" id="get-started">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Stop guessing. Start tracking.</h2>
+          <p>Set up your shop in minutes and see your stock clearly today.</p>
+          <a class="btn btn-primary" href="#top">Get started free</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 8. FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="logo" href="#top">StockWise</a>
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#who-its-for">Who it's for</a></li>
+        </ul>
+      </nav>
+      <p class="copyright">© 2026 [Your name]</p>
+    </div>
+  </footer>
+
+</body>
+</html>
